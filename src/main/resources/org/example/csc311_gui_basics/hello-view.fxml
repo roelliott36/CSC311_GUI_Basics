@@ -16,6 +16,6 @@
    <children>
    
        <Label fx:id="welcomeText" text="Meet Rochelle Elliott" />
-       <Button onAction="#onHelloButtonClick" text="Introduce Yourself" />
+       <Button onAction="#onHelloButtonClick" text="Click for Info" />
    </children>
 </VBox>
