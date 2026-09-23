@@ -32,6 +32,7 @@ public class mainPageController {
     private ListView<String> previousJobListView;
 
     private boolean showingCollege = true;
+    private int educationImageIndex = 0;
 
     private final String[] collegeInfo = {
             "Farmingdale State College",
@@ -51,10 +52,25 @@ public class mainPageController {
             "Long Island's Extraordinary Seniors - Newsday"
     };
 
+    private final String[] collegeImages = {
+            "/images/farmingdaleLogo.jpg"
+    };
+
+    private final String[] highSchoolImages = {
+            "/images/ciLogo.png",
+            "/images/stepLogo.jpg",
+            "/images/codeorgLogo.jpg",
+            "/images/newsday.png"
+    };
+
     @FXML
     public void initialize() {
 
-        loadCollegeInfo();
+        educationSwitchButton.setOnAction(event -> switchEducation());
+
+        educationPreviousButton.setOnAction(event -> previousEducationImage());
+
+        educationNextButton.setOnAction(event -> nextEducationImage());
 
         currentPositionListView.getItems().addAll(
                 "IT Help Desk Analyst",
@@ -73,26 +89,33 @@ public class mainPageController {
                 "Duration: 2 years"
         );
 
-        educationSwitchButton.setOnAction(event -> switchEducation());
-
-        educationPreviousButton.setOnAction(event -> previousEducationImage());
-
-        educationNextButton.setOnAction(event -> nextEducationImage());
+        loadCollegeInfo();
     }
 
     private void loadCollegeInfo() {
+
+        showingCollege = true;
+        educationImageIndex = 0;
+
         educationListView.getItems().setAll(collegeInfo);
         educationSwitchButton.setText("High School");
-        showingCollege = true;
+
+        showEducationImage();
     }
 
     private void loadHighSchoolInfo() {
+
+        showingCollege = false;
+        educationImageIndex = 0;
+
         educationListView.getItems().setAll(highSchoolInfo);
         educationSwitchButton.setText("College");
-        showingCollege = false;
+
+        showEducationImage();
     }
 
     private void switchEducation() {
+
         if (showingCollege) {
             loadHighSchoolInfo();
         } else {
@@ -101,10 +124,57 @@ public class mainPageController {
     }
 
     private void previousEducationImage() {
-        // Education image navigation will be added when images are provided.
+
+        String[] images;
+
+        if (showingCollege) {
+            images = collegeImages;
+        } else {
+            images = highSchoolImages;
+        }
+
+        educationImageIndex--;
+
+        if (educationImageIndex < 0) {
+            educationImageIndex = images.length - 1;
+        }
+
+        showEducationImage();
     }
 
     private void nextEducationImage() {
-        // Education image navigation will be added when images are provided.
+
+        String[] images;
+
+        if (showingCollege) {
+            images = collegeImages;
+        } else {
+            images = highSchoolImages;
+        }
+
+        educationImageIndex++;
+
+        if (educationImageIndex >= images.length) {
+            educationImageIndex = 0;
+        }
+
+        showEducationImage();
+    }
+
+    private void showEducationImage() {
+
+        String[] images;
+
+        if (showingCollege) {
+            images = collegeImages;
+        } else {
+            images = highSchoolImages;
+        }
+
+        Image image = new Image(
+                getClass().getResource(images[educationImageIndex]).toExternalForm()
+        );
+
+        educationImageView.setImage(image);
     }
 }
