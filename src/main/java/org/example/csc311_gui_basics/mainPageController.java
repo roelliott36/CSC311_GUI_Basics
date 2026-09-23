@@ -100,6 +100,9 @@ public class mainPageController {
         educationListView.getItems().setAll(collegeInfo);
         educationSwitchButton.setText("High School");
 
+        educationPreviousButton.setVisible(false);
+        educationNextButton.setVisible(false);
+
         showEducationImage();
     }
 
@@ -110,6 +113,9 @@ public class mainPageController {
 
         educationListView.getItems().setAll(highSchoolInfo);
         educationSwitchButton.setText("College");
+
+        educationPreviousButton.setVisible(true);
+        educationNextButton.setVisible(true);
 
         showEducationImage();
     }
