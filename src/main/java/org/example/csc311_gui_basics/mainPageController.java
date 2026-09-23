@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 public class mainPageController {
 
@@ -30,6 +32,15 @@ public class mainPageController {
 
     @FXML
     private ListView<String> previousJobListView;
+
+    @FXML
+    private Rectangle currentPositionImageBackground;
+
+    @FXML
+    private Rectangle previousPositionImageBackground;
+
+    @FXML
+    private Rectangle previousJobImageBackground;
 
     private boolean showingCollege = true;
     private int educationImageIndex = 0;
@@ -89,7 +100,24 @@ public class mainPageController {
                 "Duration: 2 years"
         );
 
+        loadWorkImages();
+
         loadCollegeInfo();
+    }
+
+    private void loadWorkImages() {
+
+        Image zpImage = new Image(
+                getClass().getResource("/images/zpLogo.png").toExternalForm()
+        );
+
+        Image chickfilaImage = new Image(
+                getClass().getResource("/images/chickfila.png").toExternalForm()
+        );
+
+        currentPositionImageBackground.setFill(new ImagePattern(zpImage));
+        previousPositionImageBackground.setFill(new ImagePattern(zpImage));
+        previousJobImageBackground.setFill(new ImagePattern(chickfilaImage));
     }
 
     private void loadCollegeInfo() {
@@ -177,10 +205,11 @@ public class mainPageController {
             images = highSchoolImages;
         }
 
-        Image image = new Image(
-                getClass().getResource(images[educationImageIndex]).toExternalForm()
-        );
+        var resource = getClass().getResource(images[educationImageIndex]);
 
-        educationImageView.setImage(image);
+        if (resource != null) {
+            Image image = new Image(resource.toExternalForm());
+            educationImageView.setImage(image);
+        }
     }
 }
