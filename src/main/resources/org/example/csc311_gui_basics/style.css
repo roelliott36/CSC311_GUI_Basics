@@ -1,0 +1,80 @@
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #E8F0E3;
+}
+
+.tab-pane {
+    -fx-background-color: #E8F0E3;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #B7C9A8;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #9CAF88;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #2F4030;
+    -fx-font-weight: bold;
+}
+
+.split-pane {
+    -fx-background-color: #E8F0E3;
+}
+
+.list-view {
+    -fx-background-color: #F4F7F1;
+    -fx-border-color: #9CAF88;
+    -fx-border-width: 1px;
+}
+
+.list-cell {
+    -fx-background-color: #F4F7F1;
+    -fx-text-fill: #2F4030;
+    -fx-padding: 8px;
+}
+
+.button,
+.toggle-button {
+    -fx-background-color: #7F9B6A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.label {
+    -fx-text-fill: #2F4030;
+}
+
+.accordion {
+    -fx-background-color: #E8F0E3;
+}
+
+.titled-pane {
+    -fx-background-color: #E8F0E3;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #9CAF88;
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: #2F4030;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .content {
+    -fx-background-color: #E8F0E3;
+    -fx-border-color: #B7C9A8;
+}
+
+.scroll-bar {
+    -fx-background-color: #E8F0E3;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #9CAF88;
+    -fx-background-radius: 5px;
+}
